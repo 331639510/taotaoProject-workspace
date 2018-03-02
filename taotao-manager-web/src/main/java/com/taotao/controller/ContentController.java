@@ -16,14 +16,14 @@ import com.taotao.pojo.TbContent;
  * <p>Company: www.itcast.cn</p> 
  * @version 1.0
  */
-//@Controller
+@Controller
 public class ContentController {
 	
-//	@Autowired
+	@Autowired
 	private ContentService contentService;
 	
-//	@RequestMapping("/content/save")
-//	@ResponseBody
+	@RequestMapping("/content/save")
+	@ResponseBody
 	public TaotaoResult addContent(TbContent content) {
 		return contentService.addContent(content);
 	}

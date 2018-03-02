@@ -17,10 +17,10 @@ import com.taotao.utils.FastDFSClient;
  * <p>Company: www.itcast.cn</p> 
  * @version 1.0
  */
-//@Controller
+@Controller
 public class PictureController {
 
-//	@Value("${IMAGE_SERVER_URL}")
+	@Value("${IMAGE_SERVER_URL}")
 	private String IMAGE_SERVER_URL;
 	
 	public String picUpload(MultipartFile uploadFile) {
