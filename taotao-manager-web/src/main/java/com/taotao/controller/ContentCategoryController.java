@@ -19,21 +19,21 @@ import com.taotao.content.service.ContentCategoryService;
  * <p>Company: www.itcast.cn</p> 
  * @version 1.0
  */
-@Controller
+//@Controller
 public class ContentCategoryController {
 	
-	@Autowired
+//	@Autowired
 	private ContentCategoryService contentCategoryService;
 	
-	@RequestMapping("/content/category/list")
-	@ResponseBody
+//	@RequestMapping("/content/category/list")
+//	@ResponseBody
 	public List<EasyUITreeNode> getContentCategoryList(@RequestParam(value="id", defaultValue="0")Long parentId){
 		List<EasyUITreeNode> list = contentCategoryService.getContentCategoryList(parentId);
 		return list;
 	}
 	
-	@RequestMapping("/content/category/create")
-	@ResponseBody
+//	@RequestMapping("/content/category/create")
+//	@ResponseBody
 	public TaotaoResult addContentCategory(Long parentId, String name) {
 		return contentCategoryService.addContentCategory(parentId, name);
 	}
