@@ -16,6 +16,9 @@ public class IDUtils {
 		return str;
 	}
 	
+	/**
+	 * 商品id生成
+	 */
 	public static long genItemId() {
 		long millis = System.currentTimeMillis();
 		Random random = new Random();
