@@ -13,4 +13,26 @@
   	<module>taotao-search-interface</module>
   	<module>taotao-search-service</module>
   </modules>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.taotao</groupId>
+    		<artifactId>taotao-common</artifactId>
+    		<version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+  	<plugins>
+  		<plugin>
+  			<groupId>org.apache.tomcat.maven</groupId>
+  			<artifactId>tomcat7-maven-plugin</artifactId>
+  			<configuration>
+  				<path>/</path>
+  				<port>8084</port>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+  
 </project>
