@@ -25,6 +25,7 @@ import com.taotao.mapper.TbItemMapper;
 import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemExample;
+import com.taotao.pojo.TbItemExample.Criteria;
 import com.taotao.service.ItemService;
 
 /**
@@ -105,6 +106,27 @@ public class ItemServiceImpl implements ItemService {
 		});
 		
 		return TaotaoResult.ok();
+	}
+
+	@Override
+	public TbItemDesc getItemDescById(long itemId) {
+		TbItemDesc itemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+		return itemDesc;
+	}
+
+	@Override
+	public TbItem getItemById(long itemId) {
+//		根据商品id查询商品信息
+		TbItemExample example = new TbItemExample();
+//		设置查询条件
+		Criteria criteria = example.createCriteria();
+		criteria.andIdEqualTo(itemId);
+		List<TbItem> list = itemMapper.selectByExample(example);
+		if(list != null && list.size() > 0) {
+			TbItem item = list.get(0);
+			return item;
+		}
+		return null;
 	}
 
 }
