@@ -18,4 +18,16 @@
   	<!-- 目标ConnectionFactory对应真实的可以产生JMS Connection的ConnectionFactory -->
   	<property name="targetConnectionFactory" ref="targetConnectionFactory"></property>
   </bean>
+  
+  <!-- 配置JMSTemplate -->
+  <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+  	<property name="connectionFactory" ref="connectionFactory"></property>
+  </bean>
+  <!-- 配置消息的Destination对象 -->
+  <bean id="test-queue" class="org.apache.activemq.command.ActiveMQQueue">
+  	<constructor-arg name="name" value="test-queue"></constructor-arg>
+  </bean>
+  <bean id="itemAddtopic" class="org.apache.activemq.command.ActiveMQTopic">
+  	<constructor-arg name="name" value="item-add-topic"></constructor-arg>
+  </bean>
 </beans>

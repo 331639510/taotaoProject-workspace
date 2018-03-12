@@ -33,9 +33,11 @@ public class SearchItemServiceImpl implements SearchItemService {
 		try {
 //			先查询所有商品数据
 			List<SearchItem> itemList = searchItemMapper.getItemList();
+//			遍历商品数据添加到索引库
 			for (SearchItem searchItem : itemList) {
 //				创建文档对象
 				SolrInputDocument document = new SolrInputDocument();
+//				添加域
 				document.addField("id", searchItem.getId());
 				document.addField("item_title", searchItem.getTitle());
 				document.addField("item_sell_point", searchItem.getSell_point());

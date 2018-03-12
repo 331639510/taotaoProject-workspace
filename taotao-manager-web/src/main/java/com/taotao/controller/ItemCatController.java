@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.taotao.common.pojo.EasyUITreeNode;
 import com.taotao.service.ItemCatService;
 
+/**
+ * 商品分类管理Controller
+ * @author medxing
+ *
+ */
 @Controller
 public class ItemCatController {
 

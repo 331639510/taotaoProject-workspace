@@ -6,6 +6,11 @@ import java.io.Serializable;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * 自定义响应结构
+ * @author medxing
+ *
+ */
 public class TaotaoResult implements Serializable{
 
 //	定义jackson对象

@@ -10,6 +10,7 @@ public class AD1Node {
 	private Integer widthB;
 	private String href;
 	private Integer heightB;
+	
 	public String getSrcB() {
 		return srcB;
 	}

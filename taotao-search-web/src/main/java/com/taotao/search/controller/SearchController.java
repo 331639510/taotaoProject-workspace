@@ -21,6 +21,7 @@ import com.taotao.search.service.SearchService;
 public class SearchController {
 	@Autowired
 	private SearchService searchService;
+	
 	@Value("${SEARCH_RESULT_ROWS}")
 	private Integer SEARCH_RESULT_ROWS;
 	

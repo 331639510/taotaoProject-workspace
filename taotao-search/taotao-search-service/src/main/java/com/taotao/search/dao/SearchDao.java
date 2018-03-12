@@ -41,6 +41,7 @@ public class SearchDao {
 		SearchResult result = new SearchResult();
 		result.setRecordCount(numFound);
 		List<SearchItem> itemList = new ArrayList<>();
+//		把查询结果封装到SearchItem对象中
 		for (SolrDocument solrDocument : solrDocumentList) {
 			SearchItem item = new SearchItem();
 			item.setCategory_name((String)solrDocument.get("item_category_name"));

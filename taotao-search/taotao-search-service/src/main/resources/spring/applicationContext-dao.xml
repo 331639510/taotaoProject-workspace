@@ -20,9 +20,10 @@
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
 	</bean>
-	
+	<!-- 让spring管理sqlsessionfactory 使用mybatis和spring整合包中的 -->
 	<bean id="sqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
+		<!-- 加载mabatis全局配置文件 -->
 		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" ></property>
 	</bean>
 	<!-- Mapper映射文件的包扫描器 -->

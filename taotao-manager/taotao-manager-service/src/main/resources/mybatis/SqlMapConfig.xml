@@ -6,6 +6,7 @@
 <!-- 配置分页插件 -->
 	<plugins>
 		<plugin interceptor="com.github.pagehelper.PageHelper">
+			<!-- 配置数据库方言 -->
 			<property name="dialect" value="mysql"/>
 		</plugin>
 	</plugins>

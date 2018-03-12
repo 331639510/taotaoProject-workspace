@@ -34,7 +34,7 @@ public class ItemCatServiceImpl implements ItemCatService {
 		Criteria criteria = example.createCriteria();
 		//设置parentid
 		criteria.andParentIdEqualTo(parentId);
-		
+//		执行查询
 		List<TbItemCat> list = itemCatMapper.selectByExample(example);
 		
 		List<EasyUITreeNode> resultList = new ArrayList<>();

@@ -3,7 +3,16 @@ package com.taotao.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.jms.Destination;
+import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.Session;
+import javax.jms.TextMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -32,6 +41,12 @@ public class ItemServiceImpl implements ItemService {
 	
 	@Autowired
 	private TbItemDescMapper itemDescMapper;
+	
+	@Autowired
+	private JmsTemplate jmsTemplaye;
+	
+	@Resource(name="itemAddtopic")
+	private Destination destination;
 	
 	@Override
 	public TbItem geTbItemById(long itemId) {
@@ -78,6 +93,16 @@ public class ItemServiceImpl implements ItemService {
 		
 //		向商品描述表插入数据
 		itemDescMapper.insert(itemDesc);
+		
+		jmsTemplaye.send(destination, new MessageCreator() {
+			
+			@Override
+			public Message createMessage(Session session) throws JMSException {
+//				发送商品id
+				TextMessage textMessage = session.createTextMessage(itemId + "");
+				return textMessage;
+			}
+		});
 		
 		return TaotaoResult.ok();
 	}
