@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.taotao.item.pojo.Item;
 import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
 import com.taotao.service.ItemService;
 
 @Controller
@@ -22,7 +23,11 @@ public class ItemController {
 		TbItem tbItem = itemService.getItemById(itemId);
 //		把TbItem转换Item对象
 		Item item = new Item(tbItem);
-		
+//		根据商品id查询商品描述
+		TbItemDesc tbItemDesc = itemService.getItemDescById(itemId);
+//		把数据传递给页面
+		model.addAttribute("item", item);
+		model.addAttribute("itemDesc", tbItemDesc);
 		return "item";
 	}
 	
