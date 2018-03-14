@@ -1,8 +1,11 @@
+package com.taotao.sso.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,4 +60,19 @@ public class UserController {
 
 		return result;
 	}
+	
+	@RequestMapping(value="/user/token/{token}",method=RequestMethod.GET)
+	@ResponseBody
+	public Object getUserByToken(@PathVariable String token, String callback) {
+		TaotaoResult result = userService.getUserByToken(token);
+//		判断是否为json请求
+		if (StringUtils.isNotBlank(callback)) {
+			MappingJacksonValue mappingJacksonValue = new MappingJacksonValue(result);
+//			设置毁掉方法
+			mappingJacksonValue.setJsonpFunction(callback);
+			return mappingJacksonValue;
+		}
+		return result;
+	}
+	
 }
